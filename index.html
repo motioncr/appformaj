@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>appForm</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="header.png" alt="Company Logo">
+        </div>
+        <div class="section-divider"></div>
+
+        <form name="submit-to-google-sheet" method="POST" enctype="multipart/form-data">
+            <label for="company">Company Name:</label>
+            <input type="text" id="company" name="company" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">WhatsApp nunmber:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <div class="section-divider"></div>
+            <div class="additional-info">
+                <div class="info-left">
+                    <p><strong>Web design </strong></p>
+                    <p>Total Amount</p>
+                    <input type="hidden" id="designText" name="design" value="Website design">
+                </div>
+                <div class="info-right">
+                    <p id="design-amount">R1750.00</p>
+                    <p id="total-amount">R1750.00</p>
+                    <input type="hidden" id="designAmountNumber" name="designAmount" value="R1750.00">
+                </div>
+            </div>
+            <div class="section-divider"></div>
+            <div class="note">
+                <div class="note-icon">
+                    <img src="icons8-alert-90.png" alt="Icon Image">
+                </div>
+                <div class="note-text">
+                    <p>Add logo design</p>
+                </div>
+                <div class="note-checkbox">
+                    <input name="design+added" type="checkbox" id="business-card" onchange="updateTotalAmount()">
+                    <label for="business-card"></label>
+                </div>
+            </div>
+            <div class="section-divider"></div>
+            <div class="buttons">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">Sketch</button>
+                <button type="button" class="btn btn-primary" id="descriptionButton">Description</button>
+            </div>
+            <div class="section-divider"></div>
+            <div style="margin-top: 10px;">
+                <label for="paymentMethod">Payment method:</label>
+                <select id="paymentMethod" name="paymentMethod" class="form-control">
+                    <option value="" selected disabled>Select</option>
+                    <option value="cash">Cash</option>
+                    <option value="bank">Bank</option>
+                </select>
+            </div>
+
+            <div class="description-field" style="display: none;">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="text-center" style="padding-top: 20px; padding-bottom: 20px;">
+                <p style="font-size: smaller;">Thank you for designing with us. Your payment has to be approved first. We will send you a design approval link to continue with payments and start with your design. Approval normally takes up to 24 hours.</p>
+            </div>
+
+        <button type="submit" class="btn btn-primary">Proceed with payment</button>
+            <span id="msg" class="msg"></span>
+        </form>
+
+        <div class="text-center" style="padding-top: 40px; padding-bottom: 40px;">
+            <img src="Ozow-Logo.png" alt="Image 1" width="50" height="15">
+            <img src="visa.png" alt="Image 2" width="50" height="15">
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">Upload Sketch</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="upload_widget" class="cloudinary-upload-button">Upload files</div>
+                    <div id="successMessage" style="display: none;" class="mt-3 alert alert-success" role="alert">
+                        Image uploaded successfully!
+                    </div>
+                </div>
+                
+                </div>
+                </div>
+                </div>
+                </div>
+   
+        <!-- cloudinary API -->
+        <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var myWidget = cloudinary.createUploadWidget({
+                    cloudName: 'ddaeq2zfn',
+                    uploadPreset: 'tdayhujp'
+                }, (error, result) => { 
+                    if (!error && result && result.event === "success") { 
+                        console.log('Done! Here is the image info: ', result.info); 
+                        document.getElementById('successMessage').style.display = 'block';
+                    }
+                }
+            );
+        
+            document.getElementById("upload_widget").addEventListener("click", function(){
+                myWidget.open();
+            }, false);
+        </script>
+        
+        <!-- cloudinary API END -->
+
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('uploadForm');
+            const successMessage = document.getElementById('successMessage');
+    
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+    
+                // Here, you can perform any necessary actions, such as uploading the file to Dropbox
+    
+                // Display success message
+                successMessage.style.display = 'block';
+    
+                // Reset the form
+                form.reset();
+    
+                // Hide success message after 3 seconds
+                setTimeout(function () {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            });
+        });
+    </script>
+
+    
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzhIjEHcpAwYhm__Q94NAC_cEZm1gJR1O4dcllqimJHWWot9O3IoyWSRM8vIdk-azEM/exec';
+
+    // Select all forms with the name "submit-to-google-sheet"
+    const forms = document.querySelectorAll('form[name="submit-to-google-sheet"]');
+
+    // Loop through each form and attach event listener
+    forms.forEach(form => {
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const msg = form.querySelector('.msg'); // Select the message element within the form
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                msg.innerHTML = 'Your request sent!';
+                setTimeout(function(){
+                    msg.innerHTML = '';
+                }, 5000);
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message));
+        });
+    });
+</script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+        function updateTotalAmount() {
+            var checkbox = document.getElementById("business-card");
+            var totalAmount = document.getElementById("total-amount");
+            var amount = parseFloat(totalAmount.textContent.substring(1)); // Extracting the numerical value without the 'R'
+            
+            if (checkbox.checked) {
+                // Adding 200 to the second amount if the checkbox is checked
+                amount += 200;
+            } else {
+                // Subtracting 1750 from the second amount if the checkbox is not checked
+                amount -= 200;
+            }
+            
+            // Updating the total amount text content
+            totalAmount.textContent = "R" + amount.toFixed(2); // Rounding to 2 decimal places and adding 'R' back
+        }
+
+        document.getElementById('descriptionButton').addEventListener('click', function() {
+            var descriptionField = document.querySelector('.description-field');
+            if (descriptionField.style.display === 'none') {
+                descriptionField.style.display = 'block';
+            } else {
+                descriptionField.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

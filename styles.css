@@ -1,0 +1,213 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-bottom: 100px;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Ensure the container does not exceed screen width */
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-container img {
+    max-width: 100%; /* Ensure the logo does not exceed its container width */
+    height: auto;
+}
+
+.section-divider {
+    height: 20px;
+}
+
+form {
+    padding: 0 10px; /* Add padding to form elements */
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%; /* Make form inputs take full width */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%; /* Make buttons take full width */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #191E2F;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #095fff;
+}
+
+.additional-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+#total-amount{
+    padding-left: 160px;
+}
+
+#design-amount {
+    padding-left: 160px;
+}
+
+.additional-info .info-left,
+.additional-info .info-right {
+    flex-grow: 1;
+}
+
+.note {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #c9c9c9;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.note-icon {
+    flex-grow: 0;
+    margin-right: 5px;
+}
+
+.note-text {
+    flex-grow: 1;
+    height: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.note-text p {
+    margin: 0;
+}
+
+.note-checkbox {
+    margin-top: 10px;
+    flex-grow: 0;
+}
+
+.note-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.note-checkbox label {
+    width: 20px;
+    height: 20px;
+    background-color: #777;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.note-checkbox input[type="checkbox"]:checked + label {
+    background-color: #191E2F;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    
+}
+
+.buttons button {
+    flex-grow: 1;
+    border-radius: 0;
+    background-color: #191E2F;
+}
+
+.btn {
+    background-color: #191E2F; 
+}
+
+/* Modal Styles */
+.modal-dialog {
+    max-width: 600px; /* Set maximum width for the modal */
+}
+
+/* Modal Header Styles */
+.modal-header {
+    background-color: #191E2F;
+    color: #fff;
+    border-bottom: none; /* Remove bottom border */
+}
+
+.modal-title {
+    margin: 0;
+}
+
+/* Modal Body Styles */
+.modal-body {
+    padding: 20px; /* Add padding to the modal body */
+}
+
+.cloudinary-upload-button {
+    background-color: #191E2F;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cloudinary-upload-button:hover {
+    background-color: #095fff;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+/* Close Button Styles */
+.close {
+    color: #fff;
+    opacity: 0.5;
+    position: absolute;
+    left: 160px;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.close:focus {
+    outline: none;
+}
+
+.close span {
+    font-size: 25px;
+}
+
+#msg {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 30px;
+}
